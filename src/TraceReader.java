@@ -10,7 +10,7 @@ public class TraceReader {
             throw new Error("Filename should be specified");
         }
 
-        int READ_CHUNK = 100000;
+        int READ_CHUNK = 10000;
 
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
@@ -25,6 +25,9 @@ public class TraceReader {
                 }
 
                 String[] traceComponents = s.split(" ");
+                if (traceComponents.length < 2) {
+                    return;
+                }
                 Trace tr = new Trace();
                 tr.accessType = Integer.parseInt(traceComponents[0], 10);
                 tr.address = new BigInteger(getHexStringWithoutPrefix(traceComponents[1]), 16);
