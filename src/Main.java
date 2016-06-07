@@ -70,6 +70,7 @@ public class Main {
                                 if (DRAM.isNeededToWriteBack()) {
                                     // NAND flash의 write time = 200000 + 200
                                     simulateInfo.addAccessTime(200200);
+                                    DRAM.completeWriteBack();
                                 } else {
                                     // NANA flash의 read time = 25000 + 200
                                     simulateInfo.addAccessTime(25200);
